@@ -7,7 +7,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1, user-scalable=no" />
 	<meta name="HandheldFriendly" content="True" />
 	<meta name="pinterest" content="nopin" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}" />
 	<!-- Fav Icon -->
 	<link rel="shortcut icon" type="image/x-icon" href="#" />
@@ -29,7 +31,7 @@
 						<a class="nav-link" aria-current="page" href="jobs.html">Empleos</a>
 					</li>										
 				</ul>				
-				<a class="btn btn-outline-primary me-2" href="login.html" type="submit">iniciar sesión</a>
+				<a class="btn btn-outline-primary me-2" href="{{ route('account.login') }}" type="submit">iniciar sesión</a>
 				<a class="btn btn-primary" href="post-job.html" type="submit">Anuncia un empleo</a>
 			</div>
 		</div>
@@ -104,7 +106,6 @@
 <script src="{{ asset('assets/js/custom.js') }}"></script>
 
 <script>
-		<meta name="csrf-token" content="2mHeQivILztRLR1RGKGQEm7b3eQm1YTQFciicXJ9" />
 	$.ajaxSetup({
 			headers: {
 				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -112,6 +113,7 @@
 	});
 </script>
 @yield('customJs')
+
 </body>
 </html>
 
