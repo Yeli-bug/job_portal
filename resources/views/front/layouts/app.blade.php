@@ -30,9 +30,19 @@
 					<li class="nav-item">
 						<a class="nav-link" aria-current="page" href="jobs.html">Empleos</a>
 					</li>										
-				</ul>				
-				<a class="btn btn-outline-primary me-2" href="{{ route('account.login') }}" type="submit">iniciar sesión</a>
-				<a class="btn btn-primary" href="post-job.html" type="submit">Anuncia un empleo</a>
+				</ul>		
+              	
+				@if (!Auth::check())
+				<a class="btn btn-outline-primary me-2" href="{{ route('account.login') }}" type="submit">Login</a>			
+				@else
+					{{-- @if (Auth::user()->role == 'admin') 
+					<a class="btn btn-outline-primary me-2" href="{{ route('admin.dashboard') }}" type="submit">Admin</a>				
+					@endif		--}}		
+					<a class="btn btn-outline-primary me-2" href="{{ route('account.profile') }}" type="submit">Account</a>			
+				@endif
+				
+                <a class="btn btn-primary" href="post-job.html" type="submit">Post a Job</a>
+				{{-- <a class="btn btn-primary" href="{{ route('account.createJob') }}" type="submit">Post a Job</a> --}}
 			</div>
 		</div>
 	</nav>

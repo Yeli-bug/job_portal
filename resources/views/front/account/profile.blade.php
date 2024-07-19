@@ -18,30 +18,37 @@
                 @include('front.account.sidebar')
             </div>
             <div class="col-lg-9">
+                @include('front.message')
                 <div class="card border-0 shadow mb-4">
+                <form acction="" method="post" id="userForm" name="userForm">
                     <div class="card-body p-4">
                         <h3 class="fs-4 mb-1">Mi Perfil</h3>
                         <div class="mb-4">
                             <label for="" class="mb-2">Nombre*</label>
-                            <input type="text" placeholder="Ingresa Nombre" class="form-control" value="">
+                            <input type="text" name="name" id="name" placeholder="Ingresa Nombre" class="form-control" value="
+                            {{  $user->name }}">
+                            <p></p>
                         </div>
                         <div class="mb-4">
                             <label for="" class="mb-2">Correo Electrónico*</label>
-                            <input type="text" placeholder="Ingresa Correo Electrónico" class="form-control">
+                            <input type="text" name="email" id="email" placeholder="Ingresa Correo Electrónico" class="form-control" value="{{  $user->email }}">
+                            <p></p>
                         </div>
                         <div class="mb-4">
-                            <label for="" class="mb-2">Designación*</label>
-                            <input type="text" placeholder="Designación" class="form-control">
+                            <label for="" class="mb-2">Cargo*</label>
+                            <input type="text" name="designation" id="designation" placeholder="Cargo" class="form-control" value="{{  $user->designation }}">
                         </div>
                         <div class="mb-4">
                             <label for="" class="mb-2">Telefono*</label>
-                            <input type="text" placeholder="Móvil" class="form-control">
+                            <input type="text" name="mobile" id="mobile" placeholder="Telefono" class="form-control" value="{{  $user->mobile }}">
                         </div>
                     </div>
                     <div class="card-footer p-4">
-                        <button type="button" class="btn btn-primary">Actualizar</button>
+                        <button type="submit" class="btn btn-primary">Actualizar</button>
                     </div>
+                </form>    
                 </div>
+                
                 <div class="card border-0 shadow mb-4">
                     <div class="card-body p-4">
                         <h3 class="fs-4 mb-1">Cambiar Contraseña</h3>
@@ -68,7 +75,7 @@
 </section>
 @endsection
 
-{{-- @section('customJs')
+@section('customJs')
 <script type="text/javascript">
 $("#userForm").submit(function(e){
     e.preventDefault();
@@ -195,4 +202,4 @@ $("#changePasswordForm").submit(function(e){
     });
 });
 </script>
-@endsection --}}
+@endsection

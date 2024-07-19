@@ -19,7 +19,6 @@ use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 use Illuminate\Support\Str;
 
-
 class AccountController extends Controller
 {
     //Este metodo muestra la pg de registro de usuarios
@@ -66,7 +65,6 @@ class AccountController extends Controller
     } 
 
     public function authenticate(Request $request) {
-        
         $validator = Validator::make($request->all(),[
             'email' => 'required|email',
             'password' => 'required'
@@ -77,7 +75,7 @@ class AccountController extends Controller
             if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
                 return redirect()->route('account.profile');
             } else {
-                return redirect()->route('account.login')->with('error','Either Email/Password is incorrect');
+                return redirect()->route('account.login')->with('error','El correo o la contraseña son incorrectos.');
             }
         } else {
             return redirect()->route('account.login')
@@ -85,25 +83,59 @@ class AccountController extends Controller
                 ->withInput($request->only('email'));
         }
     }
-
+    //Funcion creada para el error de la carga del login
     public function showForgotPasswordForm() {
         return view('auth.forgot-password');
     }    
     
     public function profile() {
-
-        return view('front.account.profile');        // $id = Auth::user()->id;
-
-        // $user = User::where('id',$id)->first();
-
-        // return view('front.account.profile',[
-        //     'user' => $user
-        // ]);
+        $id = Auth::user()->id;
+        $user = User::where('id',$id)->first();
+        return view('front.account.profile',[
+            'user' => $user
+        ]);
     }
     
+    public function updateProfile(Request $request) {
+
+        $id = Auth::user()->id;
+
+        $validator = Validator::make($request->all(),[
+            'name' => 'required|min:5|max:35',
+            'email' => 'required|email|unique:users,email,'.$id.',id'
+        ]);
+
+
+        if ($validator->passes()) {
+
+            $user = User::find($id);
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->mobile = $request->mobile;
+            $user->designation = $request->designation;
+            $user->save();
+
+            session()->flash('success','Perfil actualizado exitosamente.');
+
+            return response()->json([
+                'status' => true,
+                'errors' => []
+            ]);
+
+        } else {
+            return response()->json([
+                'status' => false,
+                'errors' => $validator->errors()
+            ]);
+        }
+
+    }
+
+
     public function logout(){
         Auth::logout();
         return redirect()->route('account.login');
     }
 
+    
 }
