@@ -10021,6 +10021,16 @@ footer .nav-link {
 }
 /* '' */
 
+
+.saved-job a{
+  background: #ffc107 !important;
+  color: #fff !important;
+}
+
+.trumbowyg-editor ul li{
+  list-style: disc;
+}
+
 .team-photo {
   width: 150px;  /* Ajusta el tamaño según tus necesidades */
   height: 150px; /* Mantén la relación de aspecto ajustando solo uno si es necesario */

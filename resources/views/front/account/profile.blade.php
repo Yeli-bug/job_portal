@@ -5,10 +5,10 @@
     <div class="container py-5">
         <div class="row">
             <div class="col">
-                <nav aria-label="breadcrumb" class="rounded-3 p-3 mb-4">
+                <nav aria-label="breadcrumb" class=" rounded-3 p-3 mb-4">
                     <ol class="breadcrumb mb-0">
                         <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-                        <li class="breadcrumb-item active">Configuración de la Cuenta</li>
+                        <li class="breadcrumb-item active">Perfil</li>
                     </ol>
                 </nav>
             </div>
@@ -20,55 +20,60 @@
             <div class="col-lg-9">
                 @include('front.message')
                 <div class="card border-0 shadow mb-4">
-                <form acction="" method="post" id="userForm" name="userForm">
-                    <div class="card-body p-4">
-                        <h3 class="fs-4 mb-1">Mi Perfil</h3>
-                        <div class="mb-4">
-                            <label for="" class="mb-2">Nombre*</label>
-                            <input type="text" name="name" id="name" placeholder="Ingresa Nombre" class="form-control" value="
-                            {{  $user->name }}">
-                            <p></p>
+                    <form action="" method="post" id="userForm" name="userForm">
+                        <div class="card-body  p-4">
+                            <h3 class="fs-4 mb-1">Mi Perfil</h3>
+                            <div class="mb-4">
+                                <label for="" class="mb-2">Nombre*</label>
+                                <input type="text" name="name" id="name" placeholder="Ingresa Nombre" class="form-control" value="{{ $user->name }}">
+                                <p></p>
+                            </div>
+                            <div class="mb-4">
+                                <label for="" class="mb-2">Correo Electrónico*</label>
+                                <input type="text" name="email" id="email"  placeholder="Ingresa Correo Electrónico" class="form-control" value="{{ $user->email }}">
+                                <p></p>
+                            </div>
+                            <div class="mb-4">
+                                <label for="" class="mb-2">Cargo</label>
+                                <input type="text" name="designation" id="designation"  placeholder="Cargo" class="form-control" value="{{ $user->designation }}">
+                            </div>
+                            <div class="mb-4">
+                                <label for="" class="mb-2">Telefono</label>
+                                <input type="text" name="mobile" id="mobile" placeholder="Telefono" class="form-control" value="{{ $user->mobile }}">
+                            </div>                        
                         </div>
-                        <div class="mb-4">
-                            <label for="" class="mb-2">Correo Electrónico*</label>
-                            <input type="text" name="email" id="email" placeholder="Ingresa Correo Electrónico" class="form-control" value="{{  $user->email }}">
-                            <p></p>
+                        <div class="card-footer  p-4">
+                            <button type="submit" class="btn btn-primary">Actualizar</button>
                         </div>
-                        <div class="mb-4">
-                            <label for="" class="mb-2">Cargo*</label>
-                            <input type="text" name="designation" id="designation" placeholder="Cargo" class="form-control" value="{{  $user->designation }}">
-                        </div>
-                        <div class="mb-4">
-                            <label for="" class="mb-2">Telefono*</label>
-                            <input type="text" name="mobile" id="mobile" placeholder="Telefono" class="form-control" value="{{  $user->mobile }}">
-                        </div>
-                    </div>
-                    <div class="card-footer p-4">
-                        <button type="submit" class="btn btn-primary">Actualizar</button>
-                    </div>
-                </form>    
+                    </form>
                 </div>
-                
-                <div class="card border-0 shadow mb-4">
-                    <div class="card-body p-4">
-                        <h3 class="fs-4 mb-1">Cambiar Contraseña</h3>
-                        <div class="mb-4">
-                            <label for="" class="mb-2">Contraseña Anterior*</label>
-                            <input type="password" placeholder="Contraseña Anterior" class="form-control">
+
+                {{-- <div class="card border-0 shadow mb-4">
+                    <form action="" method="post" id="changePasswordForm" name="changePasswordForm">
+                        <div class="card-body p-4">
+                            <h3 class="fs-4 mb-1">Change Password</h3>
+                            <div class="mb-4">
+                                <label for="" class="mb-2">Old Password*</label>
+                                <input type="password" name="old_password" id="old_password" placeholder="Old Password" class="form-control">
+                                <p></p>
+                            </div>
+                            <div class="mb-4">
+                                <label for="" class="mb-2">New Password*</label>
+                                <input type="password" name="new_password" id="new_password" placeholder="New Password" class="form-control">
+                                <p></p>
+                            </div>
+                            <div class="mb-4">
+                                <label for="" class="mb-2">Confirm Password*</label>
+                                <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" class="form-control">
+                                <p></p>
+                            </div>                        
                         </div>
-                        <div class="mb-4">
-                            <label for="" class="mb-2">Nueva Contraseña*</label>
-                            <input type="password" placeholder="Nueva Contraseña" class="form-control">
+                        <div class="card-footer  p-4">
+                            <button type="submit" class="btn btn-primary">Update</button>
                         </div>
-                        <div class="mb-4">
-                            <label for="" class="mb-2">Confirmar Contraseña*</label>
-                            <input type="password" placeholder="Confirmar Contraseña" class="form-control">
-                        </div>
-                    </div>
-                    <div class="card-footer p-4">
-                        <button type="button" class="btn btn-primary">Actualizar</button>
-                    </div>
-                </div>
+                    </form>
+                </div> --}}
+
             </div>
         </div>
     </div>

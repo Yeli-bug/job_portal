@@ -21,7 +21,7 @@
                         </div> 
                         <div class="mb-3">
                             <label for="" class="mb-2">Contraseña*</label>
-                            <input type="password" name="password" id="password" class="form-control" placeholder="Enter Password">
+                            <input type="password" name="password" id="password" class="form-control" placeholder="Ingrese la contraseña">
                             <p></p>
                         </div> 
                         <div class="mb-3">
